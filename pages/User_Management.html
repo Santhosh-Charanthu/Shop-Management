@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="../assets/css/User_Management.css" />
+    <title>Admin Dashboard</title>
+  </head>
+  <body>
+    <button id="sidebarToggler" class="sidebar-toggler">☰</button>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+      <button id="closeSidebar" class="close-btn">✖</button>
+      <!-- rest of your sidebar content -->
+
+      <nav>
+        <a href="#" class="nav-item">
+          <i>📊</i>
+          Dashboard
+        </a>
+        <a href="#" class="nav-item active">
+          <i>👥</i>
+          Manage Users
+        </a>
+        <a href="#" class="nav-item">
+          <i>📝</i>
+          Reports
+        </a>
+        <a href="#" class="nav-item">
+          <i>⚙️</i>
+          Settings
+        </a>
+      </nav>
+      <div class="admin-profile">
+        <img src="./icon.jpg" class="admin-avatar" alt="Admin Avatar" />
+        <div class="admin-info">
+          <span class="admin-name">Admin User</span>
+          <span class="admin-email">admin@userplatform.com</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <h1 class="page-title">User Management</h1>
+      <a href="./Shop_Registration.html" style="text-decoration: none"
+        ><button class="add-user-btn">Add User</button>
+      </a>
+
+      <div class="search-section">
+        <label class="search-label">Search users</label>
+        <div class="search-container">
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Search by name, email or ID"
+          />
+        </div>
+      </div>
+
+      <h2 class="user-list-header">User List</h2>
+
+      <table class="user-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Garments Type</th>
+            <th>Phone Number</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="shopTableBody">
+          <tr>
+            <td class="user-id">
+              <img src="./icon.jpg" class="user-avatar" alt="User Avatar" />
+              USR001
+            </td>
+            <td>John Smith</td>
+            <td>john.smith@example.com</td>
+            <td>Men Garments</td>
+            <td>+91 9876543210</td>
+            <td>
+              <div class="action-buttons">
+                <button class="edit-btn">✏️</button>
+                <button class="delete-btn">🗑️</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="user-id">
+              <img src="./icon.jpg" class="user-avatar" alt="User Avatar" />
+              USR002
+            </td>
+            <td>Sarah Johnson</td>
+            <td>sarah.j@example.com</td>
+            <td>Women Garments</td>
+            <td>+91 8765432109</td>
+            <td>
+              <div class="action-buttons">
+                <button class="edit-btn">✏️</button>
+                <button class="delete-btn">🗑️</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="user-id">
+              <img src="./icon.jpg" class="user-avatar" alt="User Avatar" />
+              USR003
+            </td>
+            <td>Michael Brown</td>
+            <td>m.brown@example.com</td>
+            <td>Both</td>
+            <td>+91 7654321098</td>
+            <td>
+              <div class="action-buttons">
+                <button class="edit-btn">✏️</button>
+                <button class="delete-btn">🗑️</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="user-id">
+              <img src="./icon.jpg" class="user-avatar" alt="User Avatar" />
+              USR004
+            </td>
+            <td>Emily Davis</td>
+            <td>emily.d@example.com</td>
+            <td>Women Garments</td>
+            <td>+91 6543210987</td>
+            <td>
+              <div class="action-buttons">
+                <button class="edit-btn">✏️</button>
+                <button class="delete-btn">🗑️</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="user-id">
+              <img src="./icon.jpg" class="user-avatar" alt="User Avatar" />
+              USR005
+            </td>
+            <td>Robert Wilson</td>
+            <td>r.wilson@example.com</td>
+            <td>Men Garments</td>
+            <td>+91 5432109876</td>
+            <td>
+              <div class="action-buttons">
+                <button class="edit-btn">✏️</button>
+                <button class="delete-btn">🗑️</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <script src="../assets/js/User_Management.js"></script>
+  </body>
+</html>

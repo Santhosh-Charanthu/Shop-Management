@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/css/Empoyee_Management.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <button class="close-btn" id="closeSidebar">✖</button>
+      <!-- Close Button -->
+      <div class="sidebar-header">
+        <h2>Admin Dashboard</h2>
+      </div>
+
+      <nav>
+        <a href="#" class="nav-item">
+          <i>📊</i>
+          Dashboard
+        </a>
+        <a href="#" class="nav-item active">
+          <i>👥</i>
+          Manage Users
+        </a>
+        <a href="#" class="nav-item">
+          <i>📝</i>
+          Reports
+        </a>
+        <a href="#" class="nav-item">
+          <i>⚙️</i>
+          Settings
+        </a>
+      </nav>
+
+      <div class="admin-profile">
+        <img src="./icon.jpg" class="admin-avatar" alt="Admin Avatar" />
+        <div class="admin-info">
+          <span class="admin-name">Admin User</span>
+          <span class="admin-email">admin@userplatform.com</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="page-header">
+        <h1 class="page-title">Employee Management</h1>
+        <a href="./Employee_Registration.html">
+          <button class="add-user-btn">Add Employees</button>
+        </a>
+      </div>
+
+      <button class="sidebar-toggler" id="sidebarToggler">☰</button>
+
+      <div class="search-section">
+        <label class="search-label">Search users</label>
+        <div class="search-container">
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Search by name, email or ID"
+          />
+        </div>
+      </div>
+
+      <h2 class="user-list-header">Employee List</h2>
+
+      <table class="user-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Gender</th>
+            <th>Designation</th>
+            <th>Phone Number</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="employeeTableBody">
+          <tr>
+            <td class="user-id" data-label="ID">
+              <img src="./icon.jpg" class="user-avatar" alt="User Avatar" />
+              EMP001
+            </td>
+            <td data-label="Full Name">John Smith</td>
+            <td data-label="Gender">Male</td>
+            <td data-label="Designation">Store Manager</td>
+            <td data-label="Phone Number">+91 9876543210</td>
+            <td data-label="Actions">
+              <div class="action-buttons">
+                <button class="edit-btn" title="Edit">
+                  <i class="fas fa-user-edit"></i>
+                  <!-- More modern edit icon -->
+                </button>
+                <button class="delete-btn" title="Delete">
+                  <i class="fas fa-trash"></i>
+                  <!-- Sleek trash icon -->
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="user-id">
+              <img src="./icon.jpg" class="user-avatar" alt="User Avatar" />
+              EMP002
+            </td>
+            <td>Sarah Johnson</td>
+            <td>Female</td>
+            <td>Sales Associate</td>
+            <td>+91 8765432109</td>
+            <td>
+              <div class="action-buttons">
+                <button class="edit-btn" title="Edit">
+                  <i class="fa-solid fa-pen"></i>
+                  <!-- More modern edit icon -->
+                </button>
+                <button class="delete-btn" title="Delete">
+                  <i class="fas fa-trash"></i>
+                  <!-- Sleek trash icon -->
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="user-id">
+              <img src="./icon.jpg" class="user-avatar" alt="User Avatar" />
+              EMP003
+            </td>
+            <td>Michael Brown</td>
+            <td>Male</td>
+            <td>Inventory Manager</td>
+            <td>+91 7654321098</td>
+            <td>
+              <div class="action-buttons">
+                <button class="edit-btn" title="Edit">
+                  <i class="fas fa-pen"></i>
+                </button>
+                <button class="delete-btn" title="Delete">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="user-id">
+              <img src="./icon.jpg" class="user-avatar" alt="User Avatar" />
+              EMP004
+            </td>
+            <td>Emily Davis</td>
+            <td>Female</td>
+            <td>Cashier</td>
+            <td>+91 6543210987</td>
+            <td>
+              <div class="action-buttons">
+                <button class="edit-btn" title="Edit">
+                  <i class="fas fa-pen"></i>
+                </button>
+                <button class="delete-btn" title="Delete">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="user-id">
+              <img src="./icon.jpg" class="user-avatar" alt="User Avatar" />
+              EMP005
+            </td>
+            <td>Robert Wilson</td>
+            <td>Male</td>
+            <td>Tailor</td>
+            <td>+91 5432109876</td>
+            <td>
+              <div class="action-buttons">
+                <button class="edit-btn" title="Edit">
+                  <i class="fas fa-pen"></i>
+                </button>
+                <button class="delete-btn" title="Delete">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <script src="../assets/js/Employee_Management.js"></script>
+  </body>
+</html>

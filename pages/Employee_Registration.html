@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Registration</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../assets/css/Employee_Registration.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Navigation -->
+
+      <!-- Header -->
+      <div class="header">
+        <h1>Employee Registration</h1>
+      </div>
+
+      <p class="form-description">
+        Complete the form below to create your employee account
+      </p>
+
+      <!-- Registration Form -->
+      <form class="needs-validation" novalidate>
+        <!-- Personal Information -->
+        <div class="form-section">
+          <h2 class="section-title">Personal Information</h2>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input
+                type="text"
+                id="firstName"
+                class="form-control"
+                placeholder="Enter first name"
+                pattern="^[A-Za-z]+$"
+                required
+              />
+              <div class="invalid-feedback">
+                Please enter a valid first name.
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input
+                type="text"
+                id="lastName"
+                class="form-control"
+                placeholder="Enter last name"
+                pattern="^[A-Za-z]+$"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="dob">Date of Birth</label>
+              <div class="date-input">
+                <input
+                  type="date"
+                  id="dob"
+                  class="form-control"
+                  placeholder="MM/DD/YYYY"
+                  required
+                />
+                <div class="invalid-feedback">
+                  Please select the Date of Birth.
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="gender" class="form-label">Gender</label>
+              <select id="gender" class="select-control" required>
+                <option value="" selected disabled>Select one</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+              <div class="invalid-feedback">Please select the gender.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Employment Details -->
+        <div class="form-section">
+          <h2 class="section-title">Employment Details</h2>
+          <div class="form-group" style="margin-bottom: 15px">
+            <label class="form-label" for="jobTitle"
+              >Job Title/Designation</label
+            >
+            <select id="jobTitle" class="select-control" required>
+              <option value="" selected disabled>Select one</option>
+              <option value="store-manager">Store Manager</option>
+              <option value="sales-associate">Sales Associate</option>
+              <option value="inventory-manager">Inventory Manager</option>
+              <option value="cashier">Cashier</option>
+              <option value="tailor">Tailor</option>
+            </select>
+            <div class="invalid-feedback">
+              Please select the Job Designation
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="joiningDate">Date of Joining</label>
+              <div class="date-input">
+                <input
+                  type="date"
+                  id="joiningDate"
+                  class="form-control"
+                  placeholder="MM/DD/YYYY"
+                  required
+                />
+                <div class="invalid-feedback">
+                  Please select the Joining Date.
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="salary" class="form-label">Salary</label>
+              <div class="salary-input">
+                <input
+                  type="text"
+                  id="salary"
+                  class="form-control"
+                  placeholder="Enter amount ($)"
+                  required
+                />
+                <div class="invalid-feedback">
+                  Please enter the salary amount
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact & Security -->
+        <div class="form-section">
+          <h2 class="section-title">Contact & Security</h2>
+
+          <!-- Phone Verification -->
+          <div class="form-group">
+            <label for="phoneNumber" class="form-label">Phone Number</label>
+            <input
+              type="tel"
+              id="phoneNumber"
+              class="form-control"
+              placeholder="+91xxxxxxxxxx"
+              pattern="^\+\d{10,15}$"
+              required
+            />
+            <div class="invalid-feedback">
+              Enter a valid phone number with country code.
+            </div>
+            <div id="recaptcha-container"></div>
+            <button
+              type="button"
+              id="sendOtpBtn"
+              class="verify-btn"
+              onclick="sendOtpMobile()"
+            >
+              Send OTP
+            </button>
+          </div>
+
+          <div id="message" class="message"></div>
+
+          <!-- OTP Verification -->
+          <div class="form-group">
+            <label for="phoneOtp">Enter OTP</label>
+            <input
+              type="text"
+              id="phoneOtp"
+              class="form-control"
+              placeholder="Enter OTP received"
+              pattern="^\d{6}$"
+              maxlength="6"
+              required
+            />
+            <div class="invalid-feedback">Enter a valid OTP</div>
+            <button
+              type="button"
+              id="verifyOtpBtn"
+              class="verify-btn"
+              onclick="verifyOtp()"
+            >
+              Verify OTP
+            </button>
+          </div>
+
+          <div id="otp-message" class="otp-message"></div>
+
+          <div class="form-group" style="margin-bottom: 15px">
+            <label for="altPhone">Alternate Mobile Number (Optional)</label>
+            <div class="input-with-button">
+              <input
+                type="tel"
+                id="altPhone"
+                class="form-control"
+                placeholder="+91xxxxxxxxxx"
+                pattern="^\+\d{10,15}$"
+              />
+              <div class="invalid-feedback">
+                Enter a valid phone number with country code.
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="password" class="form-label">Password</label>
+              <div class="password-input">
+                <input
+                  type="password"
+                  id="password"
+                  class="form-control"
+                  placeholder="Create password"
+                  minlength="6"
+                  required
+                />
+                <div class="invalid-feedback">
+                  Password must be at least 6 characters.
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="confirmPassword" class="form-label"
+                >Confirm Password</label
+              >
+              <div class="password-input">
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  class="form-control"
+                  placeholder="Confirm password"
+                  required
+                />
+                <div class="invalid-feedback">Passwords must match.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="submit-btn">
+          Create Employee Account
+        </button>
+      </form>
+      <!-- Terms Text -->
+      <p class="terms-text">
+        By registering, you agree to our Terms of Service and Privacy Policy
+      </p>
+    </div>
+    <script type="module" src="../assets/js/Employee_Registration.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
