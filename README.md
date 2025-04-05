@@ -69,3 +69,9 @@ A dynamic, multi-page web application for managing shops and employees. This sys
 3. Navigate through dashboards and forms using buttons and links.
 
 ---
+
+## 🚀 Live Demo
+
+You can check out the live version of this project here:  
+👉 [Shop Management](https://shopmanagement.netlify.app/pages/shop-dashboard/index.html)
+
