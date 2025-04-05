@@ -21,13 +21,12 @@ A dynamic, multi-page web application for managing shops and employees. This sys
   - Phone input and OTP-related buttons are disabled.
 - On submitting the form:
   - Data is stored in the browser's `localStorage`.
-  - User is redirected back to the dashboard.
-  - New shop appears in a new row of the table.
+  - User is redirected to employee dashboard.
+  - New shop will be added in a new row of the table.
 
 ### 👩‍💼 Employee Dashboard
 - Displays all registered employee details in a table.
 - "Add Employee" button redirects to the employee registration form.
-- Recently registered employees appear as new entries.
 
 ### 👨‍🔧 Employee Registration
 - Similar to shop registration:
@@ -37,7 +36,7 @@ A dynamic, multi-page web application for managing shops and employees. This sys
 - On form submission:
   - Saves data to `localStorage`.
   - Redirects back to the Employee Dashboard.
-  - Shows newly added employee.
+  - Recently registered employees appear as new entries.
 
 ### 🗑️ Deletion Feature
 - Users and employees added through the registration forms can be deleted.
@@ -51,6 +50,13 @@ A dynamic, multi-page web application for managing shops and employees. This sys
 - **CSS3**
 - **Bootstrap**
 - **JavaScript**
+
+---
+
+## OTP Verifications
+
+- **Firebase for mobile OTP verification.
+- **Email.js for email OTP verification
 
 ---
 
