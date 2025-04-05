@@ -14,7 +14,7 @@ body {
 .sidebar {
   width: 225px;
   height: 100vh;
-  background-color: #f5f5fa;
+  background-color: #f4eeff;
   padding: 20px;
   position: fixed;
   left: 0;
@@ -143,19 +143,6 @@ body {
   font-size: 14px;
 }
 
-.user-avatar {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-right: 10px;
-}
-
-.user-id {
-  display: flex;
-  align-items: center;
-}
-
 .action-buttons {
   display: flex;
   gap: 10px;
@@ -228,7 +215,7 @@ body {
 .sidebar {
   width: 225px;
   height: 100vh;
-  background-color: #f5f5fa;
+  background-color: #f4eeff;
   padding: 20px;
   position: fixed;
   left: 0;
@@ -375,8 +362,8 @@ body {
   }
 
   .user-id img {
-    position: relative;
-    top: 10px;
+    position: static;
+    margin: 0;
   }
 
   .user-avatar {

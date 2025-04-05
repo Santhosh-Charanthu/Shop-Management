@@ -181,28 +181,19 @@ document
 
 (function () {
   "use strict";
-  let form = document.querySelector(".needs-validation");
-
-  form.addEventListener("submit", function (event) {
-    if (!form.checkValidity()) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-    form.classList.add("was-validated");
-  });
-
-  // Hide error message when user types in a field
-  let inputs = form.querySelectorAll("input, select");
-  inputs.forEach((input) => {
-    input.addEventListener("input", function () {
-      if (input.checkValidity()) {
-        input.classList.remove("is-invalid");
-        input.classList.add("is-valid");
-      } else {
-        input.classList.remove("is-valid");
-        input.classList.add("is-invalid");
-      }
-    });
+  let forms = document.querySelectorAll(".needs-validation");
+  Array.prototype.slice.call(forms).forEach(function (form) {
+    form.addEventListener(
+      "submit",
+      function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add("was-validated");
+      },
+      false
+    );
   });
 })();
 

@@ -230,6 +230,14 @@ body {
   background: linear-gradient(to right, #555555, #333333);
 }
 
+button:disabled {
+  background-color: #ccc !important;
+  color: white !important;
+  cursor: not-allowed;
+  border: none;
+  opacity: 0.7;
+}
+
 /* Terms and login link */
 .terms-text {
   text-align: center;

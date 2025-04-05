@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let row = document.createElement("tr");
     row.innerHTML = `
               <td class="user-id">
-                  <img src="./icon.jpg" class="user-avatar" alt="Shop Avatar" />
+                  <i class="fas fa-user-tie" style="margin-right:20px"></i>
                   USR${shopNumber.toString().padStart(3, "0")}
               </td>
               <td>${shop.firstName} ${shop.lastName}</td>

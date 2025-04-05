@@ -16,7 +16,8 @@ body {
 .sidebar {
   width: 225px;
   height: 100vh;
-  background-color: #f5f5fa;
+  /* background-color: #f5f5fa; */
+  background-color: #f4eeff;
   padding: 20px;
   position: fixed;
   left: 0;
@@ -140,7 +141,7 @@ body {
 }
 
 .user-table td {
-  padding: 15px 10px;
+  padding: 25px 10px;
   border-bottom: 1px solid #eee;
   color: #333;
   font-size: 14px;

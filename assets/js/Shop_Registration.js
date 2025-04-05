@@ -127,7 +127,6 @@ function verifyOtp() {
       document.getElementById("phoneOtp").disabled = true;
       document.getElementById("sendOtpBtn").disabled = true;
       let verifyBtn = document.getElementById("verifyOtpBtn");
-      verifyBtn.style.backgroundColor = "#28a745";
       verifyBtn.style.color = "white";
       verifyBtn.innerText = "OTP Verified";
       verifyBtn.disabled = true;
@@ -238,7 +237,6 @@ function verifyEmailOtp() {
     document.getElementById("email").disabled = true;
     document.getElementById("sendEmailOtpBtn").disabled = true;
     let verifyBtn = document.getElementById("verify-btn");
-    verifyBtn.style.backgroundColor = "#28a745";
     verifyBtn.style.color = "white";
     verifyBtn.innerText = "OTP Verified";
     verifyBtn.disabled = true;
