@@ -61,10 +61,10 @@ document.addEventListener("DOMContentLoaded", function () {
                   <div class="action-buttons">
                       <button class="edit-btn" onclick="editShop(${
                         shopNumber - 1
-                      })">✏️</button>
+                      })"><i class="fa-solid fa-pencil"></i></button>
                       <button class="delete-btn" onclick="deleteShop(${
                         shopNumber - 1
-                      })">🗑️</button>
+                      })"><i class="fa fa-trash" aria-hidden="true"></i></button>
                   </div>
               </td>
           `;

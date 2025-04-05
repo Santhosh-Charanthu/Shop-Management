@@ -247,6 +247,14 @@ body {
   cursor: pointer;
 }
 
+i {
+  color: black;
+}
+
+.fa-trash {
+  margin-left: 20px;
+}
+
 /* Responsive styles */
 @media (max-width: 1029px) {
   .sidebar {

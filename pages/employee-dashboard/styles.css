@@ -274,6 +274,10 @@ body {
   display: none;
 }
 
+i {
+  color: black;
+}
+
 /* Responsive styles */
 @media (max-width: 1029px) {
   .sidebar {
