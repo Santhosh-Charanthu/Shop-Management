@@ -107,14 +107,3 @@ document.addEventListener("DOMContentLoaded", function () {
     sidebar.classList.remove("show");
   });
 });
-
-document.addEventListener("DOMContentLoaded", function () {
-  const isNetlify = window.location.hostname.includes("netlify.app");
-
-  if (isNetlify) {
-    document.getElementById("css-link").href =
-      "/pages/shop-registration/styles.css";
-    document.getElementById("js-script").src =
-      "/pages/shop-registration/script.js";
-  }
-});
