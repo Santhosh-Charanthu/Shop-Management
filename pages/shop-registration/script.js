@@ -1,3 +1,21 @@
+(function () {
+  "use strict";
+  let forms = document.querySelectorAll(".needs-validation");
+  Array.prototype.slice.call(forms).forEach(function (form) {
+    form.addEventListener(
+      "submit",
+      function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add("was-validated");
+      },
+      false
+    );
+  });
+})();
+
 // Import Firebase modules
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import {
@@ -88,7 +106,7 @@ function sendOtpMobile() {
   });
 }
 
-let otpVerified = false;
+let mobileOtpVerified = false;
 
 function verifyOtp() {
   const otp = document.getElementById("phoneOtp").value.trim();
@@ -104,12 +122,11 @@ function verifyOtp() {
     .confirm(otp)
     .then((result) => {
       showMessageForOtp("Phone number verified successfully!", "success");
-      otpVerified = true;
+      mobileOtpVerified = true;
+      document.getElementById("phoneNumber").disabled = true;
       document.getElementById("phoneOtp").disabled = true;
       document.getElementById("sendOtpBtn").disabled = true;
-      document.getElementById("phoneNumber").disabled = true;
       let verifyBtn = document.getElementById("verifyOtpBtn");
-      verifyBtn.style.backgroundColor = "#28a745";
       verifyBtn.style.color = "white";
       verifyBtn.innerText = "OTP Verified";
       verifyBtn.disabled = true;
@@ -164,6 +181,107 @@ function getFirebaseErrorMessage(errorCode) {
 window.sendOtpMobile = sendOtpMobile;
 window.verifyOtp = verifyOtp;
 
+// Initialize EmailJS with your public key
+emailjs.init("6r2Jkg5Lr8P-2pquF");
+
+let generatedOtp = "";
+
+// Function to generate a 6-digit OTP
+function generateOtp() {
+  return Math.floor(100000 + Math.random() * 900000).toString();
+}
+
+// Function to send OTP via EmailJS
+function sendOtpEmail() {
+  const email = document.getElementById("email").value.trim();
+
+  if (!validateEmail(email)) {
+    showMessageForEmail("Please enter a valid email address.", "error");
+    return;
+  }
+
+  generatedOtp = generateOtp(); // Generate OTP
+
+  const templateParams = {
+    to_email: email, // Ensure this matches the placeholder in your EmailJS template
+    otp: generatedOtp,
+  };
+
+  emailjs
+    .send("service_syg6yit", "template_wqg5kvr", templateParams)
+    .then(function (response) {
+      showMessageForEmail("OTP sent successfully to " + email, "success");
+      console.log("SUCCESS!", response.status, response.text);
+    })
+    .catch(function (error) {
+      showMessageForEmail("Error sending OTP. Please try again.", "error");
+      console.error("FAILED...", error);
+    });
+}
+
+let emailOtpVerified = false;
+
+// Function to verify OTP entered by the user
+function verifyEmailOtp() {
+  const enteredOtp = document.getElementById("emailOtp").value.trim();
+
+  if (!enteredOtp) {
+    showMessageForEmailOtp("Please enter the OTP.", "error");
+    return;
+  }
+
+  if (enteredOtp === generatedOtp) {
+    showMessageForEmailOtp("OTP verified successfully!", "success");
+    emailOtpVerified = true;
+    document.getElementById("emailOtp").disabled = true;
+    document.getElementById("email").disabled = true;
+    document.getElementById("sendEmailOtpBtn").disabled = true;
+    let verifyBtn = document.getElementById("verify-btn");
+    verifyBtn.style.color = "white";
+    verifyBtn.innerText = "OTP Verified";
+    verifyBtn.disabled = true;
+  } else {
+    showMessageForEmailOtp("Invalid OTP. Please try again.", "error");
+  }
+}
+
+function showMessageForEmail(message, type) {
+  const messageDiv = document.getElementById("email-message");
+  messageDiv.innerText = message;
+  messageDiv.className = `message ${
+    type === "success" ? "success-message" : "error-message"
+  }`;
+  messageDiv.style.display = "block";
+
+  setTimeout(() => {
+    messageDiv.style.display = "none";
+  }, 5000);
+}
+
+// Function to show OTP-specific messages
+function showMessageForEmailOtp(message, type) {
+  const messageDiv = document.getElementById("email-otp-message");
+  messageDiv.innerText = message;
+  messageDiv.className = `message ${
+    type === "success" ? "success-message" : "error-message"
+  }`;
+  messageDiv.style.display = "block";
+
+  setTimeout(() => {
+    messageDiv.style.display = "none";
+  }, 5000);
+}
+
+// Basic Email Validation
+function validateEmail(email) {
+  const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  return re.test(email);
+}
+
+// Ensure global access
+window.sendOtpEmail = sendOtpEmail;
+window.verifyEmailOtp = verifyEmailOtp;
+
 document
   .getElementById("confirmPassword")
   .addEventListener("input", function () {
@@ -179,68 +297,50 @@ document
     }
   });
 
-(function () {
-  "use strict";
-  let forms = document.querySelectorAll(".needs-validation");
-  Array.prototype.slice.call(forms).forEach(function (form) {
-    form.addEventListener(
-      "submit",
-      function (event) {
-        if (!form.checkValidity()) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-        form.classList.add("was-validated");
-      },
-      false
-    );
-  });
-})();
-
 document.addEventListener("DOMContentLoaded", function () {
-  document
-    .querySelector(".needs-validation")
-    .addEventListener("submit", function (event) {
-      if (!this.checkValidity()) {
-        event.preventDefault();
-        console.log("Form is invalid.");
-      } else {
-        event.preventDefault();
-        if (otpVerified) {
-          saveFormData();
-          alert("Employee data stored!");
+  const form = document.querySelector(".needs-validation");
 
-          setTimeout(function () {
-            window.location.href = "Employee_Management.html";
-          }, 500);
-        } else {
-          alert("Verify your mobile number");
-        }
+  form.addEventListener("submit", function (event) {
+    if (!form.checkValidity()) {
+      event.preventDefault();
+      event.stopPropagation();
+      form.classList.add("was-validated");
+    } else {
+      event.preventDefault(); // Stop default form submission
+
+      if (mobileOtpVerified && emailOtpVerified) {
+        saveShopData(); // Save shop data
+        alert("Shop data stored!");
+
+        // Delay navigation to ensure everything is processed
+        setTimeout(() => {
+          window.location.href = "../employee-dashboard/index.html";
+        }, 500);
+      } else {
+        alert("Verify both mobile and email");
       }
-      this.classList.add("was-validated");
-    });
+    }
+  });
 });
 
-function saveFormData() {
-  let formData = {
+function saveShopData() {
+  let shopData = {
     firstName: document.getElementById("firstName").value.trim(),
     lastName: document.getElementById("lastName").value.trim(),
-    dob: document.getElementById("dob").value,
-    gender: document.getElementById("gender").value,
-    jobTitle: document.getElementById("jobTitle").value,
-    joiningDate: document.getElementById("joiningDate").value,
-    salary: document.getElementById("salary").value.trim(),
+    shopName: document.getElementById("shopName").value.trim(),
+    shopAddress: document.getElementById("shopAddress").value.trim(),
+    garmentsType: document.getElementById("garmentsType").value,
     phoneNumber: document.getElementById("phoneNumber").value.trim(),
-    altPhone: document.getElementById("altPhone").value.trim(),
+    email: document.getElementById("email").value.trim(),
     password: document.getElementById("password").value,
   };
 
-  // Get existing data or create empty array
-  let employees = JSON.parse(localStorage.getItem("employees")) || [];
+  // Get existing shop data or create an empty array
+  let shops = JSON.parse(localStorage.getItem("shops")) || [];
 
-  // Add new employee to the array
-  employees.push(formData);
+  // Add new shop to the array
+  shops.push(shopData);
 
   // Store updated array in localStorage
-  localStorage.setItem("employees", JSON.stringify(employees));
+  localStorage.setItem("shops", JSON.stringify(shops));
 }
