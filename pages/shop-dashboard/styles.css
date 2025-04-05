@@ -147,19 +147,6 @@ body {
   font-size: 14px;
 }
 
-.user-avatar {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-right: 10px;
-}
-
-.user-id {
-  display: flex;
-  align-items: center;
-}
-
 .action-buttons {
   display: flex;
   gap: 10px;
