@@ -75,3 +75,7 @@ A dynamic, multi-page web application for managing shops and employees. This sys
 You can check out the live version of this project here:  
 👉 [Shop Management](https://shopmanagement.netlify.app/pages/shop-dashboard/index.html)
 
+📍 **Note:** The main entry point of this application is the **Shop Dashboard**, located at:  
+`/pages/shop-dashboard/index.html`
+
+This is the **default landing page** for the deployed project.
