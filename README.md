@@ -55,8 +55,8 @@ A dynamic, multi-page web application for managing shops and employees. This sys
 
 ## OTP Verifications
 
-- **Firebase for mobile OTP verification.
-- **Email.js for email OTP verification
+- **Firebase** for mobile OTP verification.
+- **Email.js** for email OTP verification
 
 ---
 
