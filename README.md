@@ -65,8 +65,8 @@ A dynamic, multi-page web application for managing shops and employees. This sys
 ## 🚀 How to Run
 
 Clone or download the repository.
-2. Navigate to the `pages/shop-dashboard/` folder.
-3. Open `index.html` in your browser to launch the application.
+1. Navigate to the `pages/shop-dashboard/` folder.
+2. Open `index.html` in your browser to launch the application.
 3. Navigate through dashboards and forms using buttons and links.
 
 ---
